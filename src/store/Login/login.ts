@@ -36,15 +36,12 @@ const LoginModule:Module<ILoginState,any>={
               
              const response: AxiosResponse | undefined = await loginService.loginRequestGet(url);
               const tempUserData: IUserInfo | undefined=response.data;
-              commit('initToken', tempUserData === undefined ? "faillogin" : "loginsuccess");
+              commit('initToken', tempUserData?.code === 0 ? "faillogin" : "loginsuccess");
               commit('initUserInfo', tempUserData)
-            //   if (tempUserData?.code === 1) {
-            //       router.push('/main')
-            //   }
    
           }
           catch(error){
-            console.log(error)
+            console.log("异步请求发生错误"+error)
 
           }
      

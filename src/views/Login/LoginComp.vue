@@ -36,6 +36,7 @@ const openFullScreen2 = () => {
     store.dispatch('LoginService/accountLoginAction', `/user/select/${account.value}/${pw.value}`)
     loading.close();
     setTimeout(() => {
+      console.log(store.state.LoginService?.token)
       if (store.state.LoginService.userInfo?.code === 1) {
         router.push('/main')
       } else alert("登录失败")
