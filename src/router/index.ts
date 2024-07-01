@@ -10,7 +10,30 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/main',
     name: 'main',
-    component: () => import('@/views/Main/MainForm.vue')
+    component: () => import('@/views/Main/MainForm.vue'),
+    children:[
+      {
+        path:'pie',
+        name:'pie',
+        component:()=>import('@/views/chart/pie')
+      },
+      {
+        path:'line',
+        name:'line',
+        component:()=>import('@/views/chart/line')
+      },
+      {
+        path:'funnel',
+        name:'funnel',
+        component:()=>import('@/views/chart/funnel')
+      },
+      {
+        path: 'press',
+        name: 'press',
+        component: () => import('@/views/chart/press')
+
+      }
+    ]
   },
   {
     path:'/:patchMatch(.*)',

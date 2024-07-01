@@ -2,7 +2,7 @@
     <div class="main">
         <el-container class="main-content">
             <el-aside :width="width">
-                <nav-menu :collapse="collapse"></nav-menu>
+                <nav-menu :collapse="collapse" :width="width"></nav-menu>
        
 
             </el-aside>
@@ -15,7 +15,9 @@
 
                  
                 </el-header>
-                <el-main>主页</el-main>
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
             </el-container>
         </el-container>
     </div>
