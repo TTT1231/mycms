@@ -14,37 +14,23 @@
 
 </template>
 <script setup lang="ts">
-
-import { ElLoading, ElMessage, ElNotification, } from 'element-plus'
 import { useStore } from 'vuex'
 import { ref } from 'vue';
 import router from '@/router';
+import loading from '@/service/EloadingService';
 const account = ref('');
 const pw = ref('');
 const store = useStore();
-const open2 = () => {
-  alert("nihao")
-}
-const openFullScreen2 = () => {
-  const loading = ElLoading.service({
-    lock: true,
-    text: "登录中请稍后.........",
-    background: 'rgba(0, 0, 0, 0.7)',
-  })
+const openFullScreen2 = async () => {
+  const datacode = await store.dispatch('LoginService/accountLoginAction', `/user/select/${account.value}/${pw.value}`)
+  loading.startLoading(document.body, "登陆中请稍后......", 1000)
+  //Module.dispatch
   setTimeout(() => {
-    //Module.dispatch
-    store.dispatch('LoginService/accountLoginAction', `/user/select/${account.value}/${pw.value}`)
-    loading.close();
-    setTimeout(() => {
-      console.log(store.state.LoginService?.token)
-      if (store.state.LoginService.userInfo?.code === 1) {
-        router.push('/main')
-      } else alert("登录失败")
+    if (datacode === 1) {
+      router.push('/main')
+    } else alert("登录失败")
 
-    }, 500)
-
-  }, 1000)
-
+  }, 1300)
 }
 </script>
 <style scoped>

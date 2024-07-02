@@ -2,7 +2,6 @@ import './types';
 import { Module } from 'vuex';
 import loginService from '@/service/index';
 import { IUserInfo } from '@/service/LoginService/types';
-import router from '@/router'
 import  { AxiosResponse } from "axios"
 const LoginModule:Module<ILoginState,any>={
     namespaced:true,
@@ -28,7 +27,7 @@ const LoginModule:Module<ILoginState,any>={
     },
     actions: {
         //异步登录请求
-        async accountLoginAction({ commit,state }, url: string) {
+        async accountLoginAction({ commit }, url: string) {
             // 实现登录逻辑     
      
           try{
@@ -38,6 +37,8 @@ const LoginModule:Module<ILoginState,any>={
               const tempUserData: IUserInfo | undefined=response.data;
               commit('initToken', tempUserData?.code === 0 ? "faillogin" : "loginsuccess");
               commit('initUserInfo', tempUserData)
+             return tempUserData===undefined||tempUserData?.code===0?
+              0:1
    
           }
           catch(error){

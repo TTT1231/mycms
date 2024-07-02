@@ -1,4 +1,4 @@
-import axios, { Axios, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
 import type {IUserInfo} from './types'
 export class LoginService{
     public instance:AxiosInstance;

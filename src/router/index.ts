@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'press',
         component: () => import('@/views/chart/press')
 
+      },
+      {
+        path:'serch',
+        name:'serch',
+        component:()=>import('@/views/pageserch')
       }
     ]
   },

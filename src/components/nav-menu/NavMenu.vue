@@ -1,6 +1,6 @@
 <template>
   <div class="nav-menu">
-    <div class="logo">
+    <div class="logo" @click="mainpush">
       <img src="~@/assets/mylocal.png" alt="logo">
       <span v-if="!collapse" class="title">我的管理系统主页</span>
     </div>
@@ -17,19 +17,16 @@
           <el-menu-item index="12"><span @click="funnelpush" class="pointer" :style="{width}">漏斗图</span></el-menu-item>
           <el-menu-item index="13"><span @click="presspush" class="pointer" :style="{width}">压力图</span></el-menu-item>
         </el-menu-item-group>
-
-
-
       </el-sub-menu>
-      <el-menu-item index="2">
+      <el-sub-menu index="2">
         <template #title>
-           <img src="~@/assets/setting.png">
-          <span>用户管理</span>
-          <el-menu-item-group>
-          <el-menu-item index="20"><span @click="linepush" class="pointer" :style="{width}">用户设置</span></el-menu-item>
-        </el-menu-item-group>
+          <img src="../../assets/setting .png">
+          <span>系统管理</span>
         </template>
-      </el-menu-item>
+        <el-menu-item-group>
+          <el-menu-item index="20"><span @click="pageserchpush" class="pointer" :style="{width}">用户设置</span></el-menu-item>
+        </el-menu-item-group>
+      </el-sub-menu>
     </el-menu>
   </div>
 </template>
@@ -57,6 +54,12 @@ const funnelpush=()=>{
 }
 const presspush=()=>{
    router.push('/main/press')
+}
+const pageserchpush=()=>{
+  router.push('/main/serch')
+}
+const mainpush=()=>{
+  router.push('/main')
 }
 </script>
 <style scoped>
